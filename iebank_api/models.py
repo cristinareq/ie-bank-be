@@ -5,7 +5,7 @@ import string, random
 class Account(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(32), nullable=False)
-    country = db.Column(db.String(32), nullable=False)
+    country = db.Column(db.String(32), nullable=False, default = None)
     account_number = db.Column(db.String(20), nullable=False, unique=True)
     balance = db.Column(db.Float, nullable=False, default = 0.0)
     currency = db.Column(db.String(1), nullable=False, default="€")
