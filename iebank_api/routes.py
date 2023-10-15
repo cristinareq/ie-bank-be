@@ -1,8 +1,6 @@
 from flask import Flask, request
 from iebank_api import db, app
 from iebank_api.models import Account
-import sys 
-sys.path.append('/Github/ie-backend/iebank_api')
 
 @app.route('/')
 def hello_world():
@@ -57,5 +55,5 @@ def format_account(account):
         'currency': account.currency,
         'country': account.country,
         'status': account.status,
-        'created_at': account.created_at
+        'created_at': account.created_at.strftime('%Y-%m-%d %H:%M:%S')
     }
