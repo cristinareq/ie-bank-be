@@ -18,16 +18,19 @@ elif os.getenv('ENV') == 'dev':
 elif os.getenv('ENV') == 'ghci':
     print("Running in github mode")
     app.config.from_object('config.GithubCIConfig')
+elif os.getenv("ENV") == "uat":
+    print("Running in UAT mode")
+    app.config.from_object("config.UATConfig")
 else:
     print("Running in production mode")
     app.config.from_object('config.ProductionConfig')
+
 
 db = SQLAlchemy(app)
 
 from iebank_api.models import Account
 with app.app_context():
-    db.create_all()
-
+    db.create_all() 
 CORS(app)
 
 from iebank_api import routes
